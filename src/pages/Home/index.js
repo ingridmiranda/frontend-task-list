@@ -21,7 +21,7 @@ const Home = () =>{
 
     const saveTask = async () => {
 
-        const task = await axios.post('http://localhost:3333/todo',{
+        const task = await axios.post(process.env.REACT_APP_API_URL,{
             /* title=title,
             description:description,
             date:date */
@@ -34,7 +34,7 @@ const Home = () =>{
     }
 
     const getTasks = async ()=>{
-        const tasks = await axios.get('http://localhost:3333/todo');
+        const tasks = await axios.get(process.env.REACT_APP_API_URL);
 
         setTasksBD(tasks.data);
 
@@ -42,7 +42,7 @@ const Home = () =>{
     }
 
     const updateTask = async (id, status) =>{
-        await axios.put('http://localhost:3333/todo/' + id, {
+        await axios.put(process.env.REACT_APP_API_URL + id, {
             status: !status
         })
         getTasks();
